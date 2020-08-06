@@ -64,7 +64,7 @@ import { ToastController } from "@ionic/angular";
   styleUrls: ["chat.page.scss"],
 })
 export class ChatPage implements OnInit {
-  usere = prompt();
+  usere = prompt("Enter Your Name Plz");
   message = "";
   messages = [];
   currentUser = "";
