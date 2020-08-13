@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card color="secondary">
+  <ion-card color="danger">
     <ion-input
       type="text"
       name="uname"
@@ -21,8 +21,11 @@
       [(ngModel)]="upwd"
       placeholder="Enter Password"
     ></ion-input>
-    <ion-button (click)="login({'uname':uname,'upwd':upwd})"
+    <ion-button (click)="login({'uname':uname,'upwd':upwd})" expand="block"
       ><ion-icon name="log-in-outline"></ion-icon>Login</ion-button
+    >
+    <ion-button (click)="google()" expand="block"
+      ><ion-icon name="logo-google"></ion-icon>Login With Google</ion-button
     >
   </ion-card>
 </ion-content>

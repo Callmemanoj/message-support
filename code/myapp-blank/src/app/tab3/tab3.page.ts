@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 export class Tab3Page implements OnInit {
   constructor(public service: logoutService, public router: Router) {}
   public logout(): any {
-    return this.service.log().subscribe(
+    return this.service.exit().subscribe(
       (posRes) => {
         if (posRes.logout == "success") {
           window.localStorage.removeItem("user_register");
@@ -25,6 +25,9 @@ export class Tab3Page implements OnInit {
         }
       }
     );
+  }
+  public funn1() {
+    console.log("Manoj");
   }
   ngOnInit() {}
 }

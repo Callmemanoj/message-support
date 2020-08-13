@@ -10,6 +10,10 @@ import { Router } from "@angular/router";
 })
 export class Tab1Page implements OnInit {
   constructor(public service: registerService, public router: Router) {}
+  public ufirst: any;
+  public ulast: any;
+  public uname: any;
+  public upwd: any;
   public enroll(data: any): any {
     this.service.insert(data).subscribe(
       (posRes) => {

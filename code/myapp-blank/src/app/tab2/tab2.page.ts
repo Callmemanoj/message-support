@@ -2,20 +2,30 @@ import { Component, OnInit } from "@angular/core";
 import { loginService } from "./login.service";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { AngularFireAuth } from "angularfire2/auth";
+
+import * as firebase from "firebase/app";
+
 @Component({
   selector: "app-tab2",
   templateUrl: "./tab2.page.html",
   styleUrls: ["./tab2.page.scss"],
 })
 export class Tab2Page implements OnInit {
-  constructor(public service: loginService, public router: Router) {}
+  constructor(
+    public service: loginService,
+    public router: Router,
+    public afAuth: AngularFireAuth
+  ) {}
+  public uname: any;
+  public upwd: any;
   public login(data) {
     return this.service.authenticate(data).subscribe(
       (posRes) => {
         if (posRes.login == "success") {
           let str = JSON.stringify(posRes);
           window.localStorage.setItem("user_register", str);
-          this.router.navigate(["/tabs/tab3"]);
+          this.router.navigate(["/dashboard"]);
         } else {
           alert("Login Failed");
         }
@@ -28,6 +38,11 @@ export class Tab2Page implements OnInit {
         }
       }
     );
+  }
+  public google() {
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    console.log("Manoj");
+    this.router.navigate(["/dashboard"]);
   }
 
   ngOnInit() {}
