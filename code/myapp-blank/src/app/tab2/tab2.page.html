@@ -12,16 +12,16 @@
     <ion-input
       type="text"
       name="uname"
-      [(ngModel)]="uname"
+      [(ngModel)]="user.uname"
       placeholder="Enter User Name"
     ></ion-input>
     <ion-input
       type="password"
       name="upwd"
-      [(ngModel)]="upwd"
+      [(ngModel)]="user.upwd"
       placeholder="Enter Password"
     ></ion-input>
-    <ion-button (click)="login({'uname':uname,'upwd':upwd})" expand="block"
+    <ion-button (click)="login(user)" expand="block"
       ><ion-icon name="log-in-outline"></ion-icon>Login</ion-button
     >
     <ion-button (click)="google()" expand="block"

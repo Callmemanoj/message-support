@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   config: {
-    apiKey: "AIzaSyDUtHFFeOwvtRFDqUIlnWYujbFuUa0uEcA",
-    authDomain: "manoj-e58ff.firebaseapp.com",
-    databaseURL: "https://manoj-e58ff.firebaseio.com",
-    projectId: "manoj-e58ff",
-    storageBucket: "manoj-e58ff.appspot.com",
-    messagingSenderId: "770231068998",
-    appId: "1:770231068998:web:b03a20ccc2310bc0e61d47",
-    measurementId: "G-4PNEG9PRRE",
+    apiKey: "AIzaSyD4f3Qe_ME_g2YHa5ZG9OEMdNLuzSO5-K0",
+    authDomain: "manoj-ionic.firebaseapp.com",
+    databaseURL: "https://manoj-ionic.firebaseio.com",
+    projectId: "manoj-ionic",
+    storageBucket: "manoj-ionic.appspot.com",
+    messagingSenderId: "1070831036456",
+    appId: "1:1070831036456:web:815605127c32943c8ded1d",
+    measurementId: "G-QXJZQ5GP3E",
   },
 };
 

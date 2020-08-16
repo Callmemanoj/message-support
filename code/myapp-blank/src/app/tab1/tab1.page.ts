@@ -1,7 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { registerService } from "./register.service";
-import { HttpErrorResponse } from "@angular/common/http";
+//import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { User } from "../models/user.module";
+import {
+  ToastController,
+  LoadingController,
+  NavController,
+} from "@ionic/angular";
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Component({
   selector: "app-tab1",
@@ -9,31 +16,67 @@ import { Router } from "@angular/router";
   styleUrls: ["./tab1.page.scss"],
 })
 export class Tab1Page implements OnInit {
-  constructor(public service: registerService, public router: Router) {}
+  user = {} as User;
+
+  constructor(
+    public service: registerService,
+    public router: Router,
+    private toastCtrl: ToastController,
+    private loadingCtrl: LoadingController,
+    private afAuth: AngularFireAuth,
+    private navCtrl: NavController
+  ) {}
   public ufirst: any;
   public ulast: any;
   public uname: any;
   public upwd: any;
-  public enroll(data: any): any {
-    this.service.insert(data).subscribe(
-      (posRes) => {
-        if (posRes.register == "success") {
-          console.log("Registration Success");
-          alert("Register Success");
-          this.router.navigate(["/tabs/tab2"]);
-        } else {
-          alert("Registration Failed");
-        }
-      },
-      (errRes: HttpErrorResponse) => {
-        if (errRes.error instanceof Error) {
-          console.log("Client Side Error");
-        } else {
-          console.log("Server Side Error");
-        }
-      }
-    );
-  }
 
   ngOnInit() {}
+
+  async register(user: User) {
+    if (this.formValidation()) {
+      //show
+      let loader = this.loadingCtrl.create({
+        message: "Please Wait",
+      });
+      (await loader).present();
+
+      try {
+        await this.afAuth.auth
+          .createUserWithEmailAndPassword(user.uname, user.upwd)
+          .then((data) => {
+            console.log(data);
+
+            //redirect to login
+            this.navCtrl.navigateRoot("tabs/tab2");
+          });
+      } catch (e) {
+        this.showToast(e);
+      }
+      //dismissing loader
+      (await loader).dismiss();
+    }
+  }
+
+  formValidation() {
+    if (!this.user.uname) {
+      this.showToast("Enter Username");
+      return false;
+    }
+
+    if (!this.user.upwd) {
+      this.showToast("Enter Password");
+      return false;
+    }
+    return true;
+  }
+
+  showToast(message: string) {
+    this.toastCtrl
+      .create({
+        message: message,
+        duration: 3000,
+      })
+      .then((toastData) => toastData.present());
+  }
 }

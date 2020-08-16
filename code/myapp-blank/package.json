@@ -30,7 +30,6 @@
     "@ionic/cli-plugin-cordova": "^1.6.2",
     "angularfire2": "^5.4.2",
     "bootstrap": "^4.0.0-beta.2",
-    "cordova-android": "^8.1.0",
     "firebase": "^7.17.1",
     "ngx-socket-io": "^3.2.0",
     "rxjs": "~6.5.1",
@@ -81,8 +80,6 @@
       },
       "cordova-plugin-ionic-keyboard": {}
     },
-    "platforms": [
-      "android"
-    ]
+    "platforms": []
   }
 }

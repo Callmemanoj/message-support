@@ -10,54 +10,21 @@
 <ion-content>
   <ion-card>
     <ion-item color="primary">
-      <ion-label>
-        <p>Enter First Name</p>
+      <ion-label position="floating">
+        Enter User Name or Email
       </ion-label>
-      <ion-input
-        type="text"
-        placeholder="Enter First Name"
-        [(ngModel)]="ufirst"
-      ></ion-input>
+      <ion-input type="text" required [(ngModel)]="user.uname"></ion-input>
     </ion-item>
     <br />
     <ion-item color="primary">
-      <ion-label>
-        <p>Enter Last Name</p>
+      <ion-label position="floating">
+        Enter Password
       </ion-label>
-      <ion-input
-        type="text"
-        placeholder="Enter Last Name"
-        [(ngModel)]="ulast"
-      ></ion-input>
+      <ion-input type="password" required [(ngModel)]="user.upwd"></ion-input>
     </ion-item>
     <br />
     <ion-item color="primary">
-      <ion-label>
-        <p>Enter User Name</p>
-      </ion-label>
-      <ion-input
-        type="text"
-        placeholder="Enter Username"
-        [(ngModel)]="uname"
-      ></ion-input>
-    </ion-item>
-    <br />
-    <ion-item color="primary">
-      <ion-label>
-        <p>Enter Password</p>
-      </ion-label>
-      <ion-input
-        type="password"
-        placeholder="Enter Password"
-        [(ngModel)]="upwd"
-      ></ion-input>
-    </ion-item>
-    <br />
-    <ion-item color="primary">
-      <ion-button
-        color="danger"
-        slot="end"
-        (click)="enroll({'ufirst':ufirst,'ulast':ulast,'uname':uname,'upwd':upwd})"
+      <ion-button color="danger" slot="end" (click)="register(user)"
         ><ion-icon name="person-add-outline"></ion-icon>Register</ion-button
       >
     </ion-item>

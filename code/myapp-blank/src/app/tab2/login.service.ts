@@ -9,6 +9,7 @@ export class loginService {
   constructor(public http: HttpClient) {}
   public authenticate(data: any): Observable<any> {
     console.log(data);
+
     return this.http.post("http://localhost:8090/login", data);
   }
 }
